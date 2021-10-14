@@ -1,0 +1,37 @@
+  {% extends 'base.html' %}
+  {% block body_block %}
+  
+  <h1> This is Info List </h1>
+ 
+    <h3>Name: {{all_info.first_name}} {{all_info.last_name}} </h3>
+    <h3>Date of Birth: {{all_info.user_birth}} </h3>
+    <h3>Rating: {{all_info.s}} </h3>
+    <h3> </h3>num_star
+  <a href="{% url 'blog:edit_info' info_id=all_info.id %}" class="btn btn-success btn-sm">Edit</a>
+  <br>
+  <a href="{% url 'blog:delete_info' info_id=all_info.id %}" class="btn btn-danger btn-sm" onclick= "return confirm('Are you sure?')">Delete</a>
+<hr>
+
+ <h1> This is Data List </h1>
+
+<table class="table table-border">
+  <tr>
+    <th> Name </th>
+    <th> User Name </th>
+    <th> User Number </th>
+    <th> Bio </th>
+    <th> Edit </th>
+  </tr>
+  {% for data in all_data %}
+  <tr>
+    <td><a href="{% url 'blog:edit_data' data_id=data.id %}">{{data.full_name}}</a></td>
+    <td>{{data.user_name}}</td>
+    <td>{{data.user_number}}</td>
+    <td>{{data.user_bio}}</td>
+    <td> <a href="{% url 'blog:delete_info' info_id=all_data.id %}" class="btn btn-danger btn-sm" onclick= "return confirm('Are you sure?')">Delete</a> </td>
+  </tr>
+  {% endfor %}
+</table>
+  
+  
+  {% endblock  %}

@@ -1,0 +1,18 @@
+  {% extends 'base.html' %}
+  {% block body_block %}
+  
+  <h1> This is Data Edit Page </h1>
+{% if text %}
+<div class="alert alert-success">{{ text }}</div>
+{% endif %}
+  <form method= "POST">
+
+  {{data_edit.as_p}}
+  {% csrf_token %}
+
+  <input type="submit" name="submit" value="Update" class="btn btn-primary btn-sm">
+</form>
+<br>
+  <a href="{% url 'blog:delete' data_id=data_id%}" class="btn btn-danger btn-sm" onclick= "return confirm('Are you sure?')">Delete</a>
+  {% endblock  %}
+  
